@@ -6,4 +6,7 @@
     <string name="album_fragment_label">Album</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
+    <string name="my_albums">My Albums</string>
+    <string name="address">address</string>
+    <string name="name">name</string>
 </resources>

@@ -1,12 +1,10 @@
 package com.example.bostatask_1.ui.profile
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
-import com.example.bostatask_1.R
+import androidx.fragment.app.Fragment
 import com.example.bostatask_1.databinding.FragmentProfileBinding
 
 /**
@@ -26,7 +24,6 @@ class ProfileFragment : Fragment() {
     ): View {
 
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
-        binding.toolbar.title = "Profile"
         return binding.root
 
     }

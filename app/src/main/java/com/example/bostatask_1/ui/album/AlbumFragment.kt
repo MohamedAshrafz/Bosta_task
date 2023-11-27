@@ -27,7 +27,6 @@ class AlbumFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentAlbumBinding.inflate(inflater, container, false)
-        binding.toolbar.title = "hi there"
         return binding.root
 
     }
