@@ -5,7 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import com.example.bostatask_1.databinding.FragmentProfileBinding
+import com.example.bostatask_1.network.Network.NetworkServices
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -18,12 +20,19 @@ class ProfileFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
+    private val profileViewModel by activityViewModels<ProfileViewModel>()
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
 
+
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
+
+        binding.lifecycleOwner = viewLifecycleOwner
+        binding.viewModel = profileViewModel
         return binding.root
 
     }

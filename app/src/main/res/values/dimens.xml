@@ -2,6 +2,6 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="margin_profile_vertical">10dp</dimen>
     <dimen name="margin_profile_horizontal">16dp</dimen>
-    <dimen name="profileTitle_textSize">25sp</dimen>
-    <dimen name="profileSubTitle_textSize">20sp</dimen>
+    <dimen name="profileTitle_textSize">20sp</dimen>
+    <dimen name="profileSubTitle_textSize">16sp</dimen>
 </resources>
