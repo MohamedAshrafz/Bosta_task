@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">BostaTask_1</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="profile_fragment_label">Profile</string>
+    <string name="album_fragment_label">Album</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+</resources>
