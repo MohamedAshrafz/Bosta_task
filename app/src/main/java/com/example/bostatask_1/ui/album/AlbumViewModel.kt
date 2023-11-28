@@ -28,4 +28,19 @@ class AlbumViewModel(private val selectedAlbum: AlbumProperty) : ViewModel() {
     }
     val photosList: LiveData<List<PhotoProperty>>
         get() = _photosList
+
+    private var _searchText = MutableLiveData("")
+
+    fun setSearchText(queryText: String){
+        _searchText.value = queryText
+    }
+
+    var queriedPhotosList = _searchText.switchMap { queryText ->
+        val list: LiveData<List<PhotoProperty>> = if (queryText != "") {
+            _photosList.map { list -> list.filter { it.title.contains(queryText) } }
+        } else {
+            _photosList
+        }
+        list
+    }
 }
