@@ -1,10 +1,9 @@
 package com.example.bostatask_1.ui.album
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.*
 import com.example.bostatask_1.network.AlbumProperty
+import com.example.bostatask_1.network.Network.NetworkServices
+import com.example.bostatask_1.network.PhotoProperty
 
 class AlbumViewModelFactory(
     private val selectedAlbum: AlbumProperty
@@ -20,7 +19,13 @@ class AlbumViewModelFactory(
 
 class AlbumViewModel(private val selectedAlbum: AlbumProperty) : ViewModel() {
 
-    private var _text = MutableLiveData(selectedAlbum.id + "\n" + selectedAlbum.title)
-    val text: LiveData<String>
-        get() = _text
+    private var _titleText = MutableLiveData(selectedAlbum.title)
+    val titleText: LiveData<String>
+        get() = _titleText
+
+    private var _photosList = liveData {
+        emit(NetworkServices.getPhotosForAlbumId(selectedAlbum.id))
+    }
+    val photosList: LiveData<List<PhotoProperty>>
+        get() = _photosList
 }

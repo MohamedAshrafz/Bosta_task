@@ -26,6 +26,9 @@ interface AppApiInterface {
 
     @GET("albums")
     suspend fun getAlbumsForUserId(@Query("userId") Id: String): List<AlbumProperty>
+
+    @GET("photos")
+    suspend fun getPhotosForAlbumId(@Query("albumId") Id: String): List<PhotoProperty>
 }
 
 object Network {

@@ -21,7 +21,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_profile_horizontal"
             android:layout_marginTop="@dimen/margin_profile_vertical"
-            android:text="@{viewModel.user.name}"
+            tools:text="Name"
+            android:text="@{viewModel.user.userName}"
             android:textSize="@dimen/profileTitle_textSize"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -33,6 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_profile_vertical"
+            tools:text="Address"
             android:text="@{viewModel.user.address}"
             android:textSize="@dimen/profileSubTitle_textSize"
             app:layout_constraintEnd_toEndOf="parent"
@@ -63,7 +65,7 @@
             app:layout_constraintVertical_bias="0.0">
 
             <LinearLayout
-                android:id="@+id/linearLayout_albumsList"
+                android:id="@+id/albumsList_linearLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical" />

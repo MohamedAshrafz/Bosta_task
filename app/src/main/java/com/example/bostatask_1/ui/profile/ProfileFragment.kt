@@ -46,7 +46,7 @@ class ProfileFragment : Fragment() {
                     )
                 }
                 itemBinding.lifecycleOwner = viewLifecycleOwner
-                binding.linearLayoutAlbumsList.addView(itemBinding.constraintLayout)
+                binding.albumsListLinearLayout.addView(itemBinding.constraintLayout)
             }
 
         }

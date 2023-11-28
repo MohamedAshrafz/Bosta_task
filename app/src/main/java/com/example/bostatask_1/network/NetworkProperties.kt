@@ -14,7 +14,14 @@ data class UserProperty(
     val userName: String,
     @Json(name = "address")
     val userAddress: AddressProperty,
-) : Parcelable
+) : Parcelable {
+    fun getAddress(): String {
+        return "${this.userAddress.street}, " +
+                "${this.userAddress.suite}, " +
+                "${this.userAddress.city}, " +
+                this.userAddress.zipcode
+    }
+}
 
 
 @Parcelize
@@ -37,4 +44,17 @@ data class AlbumProperty(
     val id: String,
     @Json(name = "title")
     val title: String
-): Parcelable
+) : Parcelable
+
+@Parcelize
+@JsonClass(generateAdapter = true)
+data class PhotoProperty(
+    @Json(name = "id")
+    val id: String,
+    @Json(name = "title")
+    val title: String,
+    @Json(name = "url")
+    val url: String,
+    @Json(name = "thumbnailUrl")
+    val thumbnailUrl: String
+) : Parcelable

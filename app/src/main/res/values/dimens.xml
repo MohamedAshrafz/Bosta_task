@@ -5,7 +5,7 @@
     <dimen name="profileTitle_textSize">20sp</dimen>
     <dimen name="profileSubTitle_textSize">16sp</dimen>
     <dimen name="global_elevation">7dp</dimen>
-    <dimen name="shape_item_radius">20dp</dimen>
+    <dimen name="shape_item_radius">7dp</dimen>
     <dimen name="profile_item_margin">10dp</dimen>
     <dimen name="profile_item_text_margin">5dp</dimen>
 </resources>
