@@ -2,21 +2,8 @@ package com.example.bostatask_1.ui.profile
 
 import androidx.lifecycle.*
 import com.example.bostatask_1.model.UserData
+import com.example.bostatask_1.network.AlbumProperty
 import com.example.bostatask_1.network.Network.NetworkServices
-
-
-//class ProfileViewModelFactory(
-//    private val application: Application,
-//    private val userId: String
-//) : ViewModelProvider.Factory {
-//    @Suppress("unchecked_cast")
-//    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-//        if (modelClass.isAssignableFrom(ProfileViewModel::class.java)) {
-//            return ProfileViewModel(application, userId) as T
-//        }
-//        throw IllegalArgumentException("Unknown ViewModel class")
-//    }
-//}
 
 class ProfileViewModel : ViewModel() {
 
@@ -39,11 +26,10 @@ class ProfileViewModel : ViewModel() {
         get() = _user
 
     private var _albumsList = user.switchMap {
-        liveData<List<String>> {
-            val list = NetworkServices.getAlbumsForUserId(it.id).map { album -> album.title }
-            emit(list)
+        liveData {
+            emit(NetworkServices.getAlbumsForUserId(it.id))
         }
     }
-    val albumsList: LiveData<List<String>>
+    val albumsList: LiveData<List<AlbumProperty>>
         get() = _albumsList
 }

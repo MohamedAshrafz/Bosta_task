@@ -33,6 +33,8 @@ data class AddressProperty(
 @Parcelize
 @JsonClass(generateAdapter = true)
 data class AlbumProperty(
+    @Json(name = "id")
+    val id: String,
     @Json(name = "title")
     val title: String
 ): Parcelable

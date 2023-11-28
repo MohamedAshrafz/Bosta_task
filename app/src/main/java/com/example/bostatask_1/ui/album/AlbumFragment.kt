@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.navigation.ui.AppBarConfiguration
+import androidx.lifecycle.ViewModelProvider
 import com.example.bostatask_1.databinding.FragmentAlbumBinding
 
 /**
@@ -18,8 +18,7 @@ class AlbumFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
-
-    private lateinit var appBarConfiguration: AppBarConfiguration
+    private lateinit var albumViewModel: AlbumViewModel
 
 
     override fun onCreateView(
@@ -27,16 +26,17 @@ class AlbumFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentAlbumBinding.inflate(inflater, container, false)
+
+        val selectedAlbum = AlbumFragmentArgs.fromBundle(requireArguments()).selectedAlbum
+        albumViewModel =
+            ViewModelProvider(this, AlbumViewModelFactory(selectedAlbum))[AlbumViewModel::class.java]
+
+        binding.lifecycleOwner = viewLifecycleOwner
+        binding.viewModel = albumViewModel
+
         return binding.root
 
     }
-
-    override fun onStart() {
-        super.onStart()
-
-
-    }
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

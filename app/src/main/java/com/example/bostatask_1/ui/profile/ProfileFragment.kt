@@ -36,13 +36,14 @@ class ProfileFragment : Fragment() {
         binding.viewModel = profileViewModel
 
         profileViewModel.albumsList.observe(viewLifecycleOwner) {
-            for (title in it) {
+            for (album in it) {
 
                 val itemBinding = AlbumListItemBinding.inflate(layoutInflater, container, false)
-                itemBinding.text = title
+                itemBinding.text = album.title
                 itemBinding.constraintLayout.setOnClickListener {
-                    findNavController()
-                        .navigate(ProfileFragmentDirections.actionProfileFragmentToAlbumFragment())
+                    findNavController().navigate(
+                        ProfileFragmentDirections.actionProfileFragmentToAlbumFragment(album)
+                    )
                 }
                 itemBinding.lifecycleOwner = viewLifecycleOwner
                 binding.linearLayoutAlbumsList.addView(itemBinding.constraintLayout)

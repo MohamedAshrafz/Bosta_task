@@ -18,5 +18,9 @@
         android:id="@+id/AlbumFragment"
         android:name="com.example.bostatask_1.ui.album.AlbumFragment"
         android:label="@string/album_fragment_label"
-        tools:layout="@layout/fragment_album" />
+        tools:layout="@layout/fragment_album" >
+        <argument
+            android:name="selectedAlbum"
+            app:argType="com.example.bostatask_1.network.AlbumProperty" />
+    </fragment>
 </navigation>
