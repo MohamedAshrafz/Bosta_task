@@ -36,23 +36,7 @@ class ProfileFragment : Fragment() {
         binding.viewModel = profileViewModel
 
         profileViewModel.albumsList.observe(viewLifecycleOwner) {
-//            val list = listOf("hi", "there")
             for (title in it) {
-
-//                val cv = CardView(requireContext())
-//                cv.cardElevation = 5F
-//                val tv = TextView(requireContext())
-//                tv.text = title
-//                tv.textSize = 16F
-//                cv.setOnClickListener {
-//                    findNavController()
-//                        .navigate(ProfileFragmentDirections.actionProfileFragmentToAlbumFragment())
-//                }
-//                cv.addView(tv)
-//                binding.linearLayoutAlbumsList.addView(cv)
-//                val s = Space(requireContext())
-//                s.minimumHeight = 30
-//                binding.linearLayoutAlbumsList.addView(s)
 
                 val itemBinding = AlbumListItemBinding.inflate(layoutInflater, container, false)
                 itemBinding.text = title
