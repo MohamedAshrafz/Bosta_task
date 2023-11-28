@@ -36,7 +36,7 @@ class AlbumGridRVAdaptor(private val clickListener: (photoProperty: PhotoPropert
             clickListener: (photoProperty: PhotoProperty) -> Unit
         ) {
             binding.url = propertyItem.thumbnailUrl
-            binding.title = propertyItem.title
+//            binding.title = propertyItem.title
             binding.gridItemConstraintLayout.setOnClickListener { clickListener(propertyItem) }
             binding.executePendingBindings()
         }

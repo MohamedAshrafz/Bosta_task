@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.bostatask_1.databinding.FragmentAlbumBinding
@@ -39,11 +40,22 @@ class AlbumFragment : Fragment() {
         binding.viewModel = albumViewModel
 
         val adaptorRV = AlbumGridRVAdaptor({
-
+            // TODO
         })
         binding.gridList.adapter = adaptorRV
 
         binding.albumSearchBar.setOnQueryTextListener(MySearchQueryListener(albumViewModel))
+
+        albumViewModel.showToast.observe(viewLifecycleOwner) {
+            if (it == true) {
+                Toast.makeText(
+                    requireContext(),
+                    "Cannot connect to the server",
+                    Toast.LENGTH_LONG
+                ).show()
+                albumViewModel.clearShowToast()
+            }
+        }
 
         return binding.root
 

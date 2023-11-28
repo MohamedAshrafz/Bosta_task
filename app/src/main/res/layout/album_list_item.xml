@@ -14,14 +14,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/profile_item_margin"
-        android:layout_marginTop="@dimen/profile_item_margin"
+        android:layout_marginBottom="@dimen/profile_item_margin"
         android:layout_marginEnd="@dimen/profile_item_margin"
         android:background="@drawable/background_shape"
         android:elevation="@dimen/global_elevation">
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/profile_item_text_margin"
             android:text="@{text}"
