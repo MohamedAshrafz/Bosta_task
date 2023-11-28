@@ -29,3 +29,10 @@ data class AddressProperty(
     @Json(name = "zipcode")
     val zipcode: String
 ) : Parcelable
+
+@Parcelize
+@JsonClass(generateAdapter = true)
+data class AlbumProperty(
+    @Json(name = "title")
+    val title: String
+): Parcelable

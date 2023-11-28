@@ -3,7 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Andriod_studio_projects/general_projects/BostaTask_1/app/src/main/res/drawable-v24/background_shape.xml" value="0.16" />
         <entry key="..\:/Andriod_studio_projects/general_projects/BostaTask_1/app/src/main/res/layout/activity_main.xml" value="0.22780797101449277" />
+        <entry key="..\:/Andriod_studio_projects/general_projects/BostaTask_1/app/src/main/res/layout/album_list_item.xml" value="0.22780797101449277" />
         <entry key="..\:/Andriod_studio_projects/general_projects/BostaTask_1/app/src/main/res/layout/content_main.xml" value="0.22780797101449277" />
         <entry key="..\:/Andriod_studio_projects/general_projects/BostaTask_1/app/src/main/res/layout/fragment_album.xml" value="0.22780797101449277" />
         <entry key="..\:/Andriod_studio_projects/general_projects/BostaTask_1/app/src/main/res/layout/fragment_first.xml" value="0.22780797101449277" />

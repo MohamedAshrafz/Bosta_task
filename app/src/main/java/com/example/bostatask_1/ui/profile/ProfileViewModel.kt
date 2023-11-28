@@ -3,10 +3,6 @@ package com.example.bostatask_1.ui.profile
 import androidx.lifecycle.*
 import com.example.bostatask_1.model.UserData
 import com.example.bostatask_1.network.Network.NetworkServices
-import com.example.bostatask_1.network.UserProperty
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 
 //class ProfileViewModelFactory(
@@ -36,10 +32,18 @@ class ProfileViewModel : ViewModel() {
             address = "${randomUser.userAddress.street}, " +
                     "${randomUser.userAddress.suite}, " +
                     "${randomUser.userAddress.city}, " +
-                    randomUser.userAddress.zipcode
+                    randomUser.userAddress.zipcode,
         )
     }
     val user: LiveData<UserData>
         get() = _user
 
+    private var _albumsList = user.switchMap {
+        liveData<List<String>> {
+            val list = NetworkServices.getAlbumsForUserId(it.id).map { album -> album.title }
+            emit(list)
+        }
+    }
+    val albumsList: LiveData<List<String>>
+        get() = _albumsList
 }

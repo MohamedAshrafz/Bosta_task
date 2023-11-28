@@ -2,4 +2,8 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="colorSurface">#EBF7FF</color>
+    <color name="colorSecondaryContainer">#9C27B0</color>
+    <color name="album_item_color">#DADADA</color>
 </resources>

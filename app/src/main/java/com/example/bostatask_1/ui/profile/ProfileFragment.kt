@@ -6,8 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
+import com.example.bostatask_1.databinding.AlbumListItemBinding
 import com.example.bostatask_1.databinding.FragmentProfileBinding
-import com.example.bostatask_1.network.Network.NetworkServices
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -33,6 +34,37 @@ class ProfileFragment : Fragment() {
 
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = profileViewModel
+
+        profileViewModel.albumsList.observe(viewLifecycleOwner) {
+//            val list = listOf("hi", "there")
+            for (title in it) {
+
+//                val cv = CardView(requireContext())
+//                cv.cardElevation = 5F
+//                val tv = TextView(requireContext())
+//                tv.text = title
+//                tv.textSize = 16F
+//                cv.setOnClickListener {
+//                    findNavController()
+//                        .navigate(ProfileFragmentDirections.actionProfileFragmentToAlbumFragment())
+//                }
+//                cv.addView(tv)
+//                binding.linearLayoutAlbumsList.addView(cv)
+//                val s = Space(requireContext())
+//                s.minimumHeight = 30
+//                binding.linearLayoutAlbumsList.addView(s)
+
+                val itemBinding = AlbumListItemBinding.inflate(layoutInflater, container, false)
+                itemBinding.text = title
+                itemBinding.constraintLayout.setOnClickListener {
+                    findNavController()
+                        .navigate(ProfileFragmentDirections.actionProfileFragmentToAlbumFragment())
+                }
+                itemBinding.lifecycleOwner = viewLifecycleOwner
+                binding.linearLayoutAlbumsList.addView(itemBinding.constraintLayout)
+            }
+
+        }
         return binding.root
 
     }
