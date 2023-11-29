@@ -33,8 +33,6 @@ class AlbumViewModel(private val selectedAlbum: AlbumProperty) : ViewModel() {
             Timber.tag("REPOSITORY_ERROR_STRING").e(e.stackTraceToString())
         }
     }
-    val photosList: LiveData<List<PhotoProperty>>
-        get() = _photosList
 
     private var _searchText = MutableLiveData("")
 
@@ -55,11 +53,19 @@ class AlbumViewModel(private val selectedAlbum: AlbumProperty) : ViewModel() {
     val showToast: LiveData<Boolean>
         get() = _showToast
 
+    fun setShowToast(){
+        _showToast.postValue(true)
+    }
+
     fun clearShowToast() {
         _showToast.value = false
     }
 
-    var _photoSelected = MutableLiveData<Bitmap>()
+    private var _photoSelected = MutableLiveData<Bitmap>()
     val photoSelected: LiveData<Bitmap>
         get() = _photoSelected
+
+    fun setSelectedPhoto(bm: Bitmap) {
+        _photoSelected.postValue(bm)
+    }
 }

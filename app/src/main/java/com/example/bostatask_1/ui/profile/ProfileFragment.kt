@@ -30,12 +30,13 @@ class ProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
 
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = profileViewModel
 
+        // do the inflation manually (there is no need to use more sophisticated list like recycler view
+        // ad this list is actually static after the initial loading)
         profileViewModel.albumsList.observe(viewLifecycleOwner) {
             for (album in it) {
 

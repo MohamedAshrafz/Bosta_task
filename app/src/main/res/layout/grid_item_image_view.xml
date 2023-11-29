@@ -31,16 +31,16 @@
             app:layout_constraintTop_toTopOf="parent" />
 
 <!--        for testing the search functionality we could but the title of each image on it-->
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{title}"
-            android:textSize="10sp"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView"
-            app:layout_constraintEnd_toEndOf="@+id/imageView"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+<!--        <TextView-->
+<!--            android:id="@+id/textView2"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@{title}"-->
+<!--            android:textSize="10sp"-->
+<!--            app:layout_constraintBottom_toBottomOf="@+id/imageView"-->
+<!--            app:layout_constraintEnd_toEndOf="@+id/imageView"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

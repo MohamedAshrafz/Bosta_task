@@ -13,6 +13,7 @@ import com.example.bostatask_1.databinding.FragmentAlbumBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import java.net.URL
 
 /**
@@ -26,6 +27,9 @@ class AlbumFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
     private lateinit var albumViewModel: AlbumViewModel
+
+    // Create a new coroutine scope
+    private val scope = CoroutineScope(Dispatchers.Default)
 
 
     override fun onCreateView(
@@ -45,26 +49,33 @@ class AlbumFragment : Fragment() {
         binding.viewModel = albumViewModel
 
         val adaptorRV = AlbumGridRVAdaptor {
-            // Create a new coroutine scope
-            val scope = CoroutineScope(Dispatchers.Default)
-
             // Launch a new coroutine in the scope
             scope.launch {
-                val url = URL(it.url)
-                val imageData = url.readBytes()
+                try {
+                    val url = URL(it.url)
+                    val imageData = url.readBytes()
+                    val bitmap = BitmapFactory.decodeByteArray(imageData, 0, imageData.size)
 
-                val bitmap = BitmapFactory.decodeByteArray(imageData, 0, imageData.size)
-
-                albumViewModel._photoSelected.postValue(bitmap)
+                    albumViewModel.setSelectedPhoto(bitmap)
+                } catch (e: Exception) {
+                    albumViewModel.setShowToast()
+                    Timber.tag("REPOSITORY_ERROR_STRING").e(e.stackTraceToString())
+                }
             }
         }
+        binding.gridList.adapter = adaptorRV
 
+        // adding the query listener to the search bar
+        binding.albumSearchBar.setOnQueryTextListener(MySearchQueryListener(albumViewModel))
+
+        // previewing the clicked photo as full sized photo
         albumViewModel.photoSelected.observe(viewLifecycleOwner){
             binding.selectedImageImageView.setImageBitmap(it)
             binding.selectedImageImageView.visibility = View.VISIBLE
             binding.dummyLayout.visibility = View.VISIBLE
         }
 
+        // if the user clicked anywhere on the screen other than the photo previewed exit this preview
         binding.dummyLayout.setOnClickListener {
             if (it.visibility == View.VISIBLE){
                 it.visibility = View.GONE
@@ -72,10 +83,8 @@ class AlbumFragment : Fragment() {
             }
         }
 
+        // set OnClick to disable the previewed photo area from escaping
         binding.selectedImageImageView.setOnClickListener {  }
-        binding.gridList.adapter = adaptorRV
-
-        binding.albumSearchBar.setOnQueryTextListener(MySearchQueryListener(albumViewModel))
 
         albumViewModel.showToast.observe(viewLifecycleOwner) {
             if (it == true) {

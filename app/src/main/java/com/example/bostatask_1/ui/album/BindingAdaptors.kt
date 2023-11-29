@@ -16,9 +16,6 @@ fun bindRecyclerViewWithList(recyclerView: RecyclerView, list: List<PhotoPropert
 }
 
 @BindingAdapter("imageUrl")
-// take care of the nullable String
-// (after opening the app the imageUrl will be null till getting the value,
-// after fetching the data from the remote server)
 fun bindImage(imageView: ImageView, imageUrl: String?) {
     imageUrl?.let {
         val imageUri = imageUrl.toUri().buildUpon().scheme("https").build()
