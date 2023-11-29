@@ -55,5 +55,22 @@
             app:spanCount="3"
             tools:itemCount="16"
             tools:listitem="@layout/grid_item_image_view" />
+
+        <ImageView
+            android:id="@+id/dummyLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/selectedImage_imageView"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@tools:sample/avatars" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

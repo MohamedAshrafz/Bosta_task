@@ -1,5 +1,6 @@
 package com.example.bostatask_1.ui.album
 
+import android.graphics.Bitmap
 import androidx.lifecycle.*
 import com.example.bostatask_1.network.AlbumProperty
 import com.example.bostatask_1.network.Network.NetworkServices
@@ -57,4 +58,8 @@ class AlbumViewModel(private val selectedAlbum: AlbumProperty) : ViewModel() {
     fun clearShowToast() {
         _showToast.value = false
     }
+
+    var _photoSelected = MutableLiveData<Bitmap>()
+    val photoSelected: LiveData<Bitmap>
+        get() = _photoSelected
 }

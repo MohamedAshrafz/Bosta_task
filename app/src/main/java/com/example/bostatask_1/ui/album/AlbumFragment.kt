@@ -1,5 +1,6 @@
 package com.example.bostatask_1.ui.album
 
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,10 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.bostatask_1.databinding.FragmentAlbumBinding
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import java.net.URL
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
@@ -39,9 +44,35 @@ class AlbumFragment : Fragment() {
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = albumViewModel
 
-        val adaptorRV = AlbumGridRVAdaptor({
-            // TODO
-        })
+        val adaptorRV = AlbumGridRVAdaptor {
+            // Create a new coroutine scope
+            val scope = CoroutineScope(Dispatchers.Default)
+
+            // Launch a new coroutine in the scope
+            scope.launch {
+                val url = URL(it.url)
+                val imageData = url.readBytes()
+
+                val bitmap = BitmapFactory.decodeByteArray(imageData, 0, imageData.size)
+
+                albumViewModel._photoSelected.postValue(bitmap)
+            }
+        }
+
+        albumViewModel.photoSelected.observe(viewLifecycleOwner){
+            binding.selectedImageImageView.setImageBitmap(it)
+            binding.selectedImageImageView.visibility = View.VISIBLE
+            binding.dummyLayout.visibility = View.VISIBLE
+        }
+
+        binding.dummyLayout.setOnClickListener {
+            if (it.visibility == View.VISIBLE){
+                it.visibility = View.GONE
+                binding.selectedImageImageView.visibility = View.GONE
+            }
+        }
+
+        binding.selectedImageImageView.setOnClickListener {  }
         binding.gridList.adapter = adaptorRV
 
         binding.albumSearchBar.setOnQueryTextListener(MySearchQueryListener(albumViewModel))
