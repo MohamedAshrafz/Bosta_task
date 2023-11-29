@@ -21,16 +21,16 @@
         <ImageView
             android:id="@+id/imageView"
             imageUrl="@{url}"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
+            android:layout_width="@dimen/grid_image_dimension"
+            android:layout_height="@dimen/grid_image_dimension"
             android:adjustViewBounds="true"
-            android:padding="2dp"
             android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+<!--        for testing the search functionality we could but the title of each image on it-->
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
